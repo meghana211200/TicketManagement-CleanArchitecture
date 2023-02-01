@@ -1,0 +1,60 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "Domain/1.0.0": {
+        "dependencies": {
+          "AWSSDK.CognitoIdentityProvider": "3.7.101.62",
+          "AWSSDK.Core": "3.7.103.24"
+        },
+        "runtime": {
+          "Domain.dll": {}
+        }
+      },
+      "AWSSDK.CognitoIdentityProvider/3.7.101.62": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.103.24"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.CognitoIdentityProvider.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.101.62"
+          }
+        }
+      },
+      "AWSSDK.Core/3.7.103.24": {
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.103.24"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AWSSDK.CognitoIdentityProvider/3.7.101.62": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-t9Y+PH95b2ozAfvJ4A81G1jxWE2LUhByDoKzvUXFZAQpQMIq8FlB+Y/ko6CA0n/iAVas2hY/5WPsDYaB+HFc6Q==",
+      "path": "awssdk.cognitoidentityprovider/3.7.101.62",
+      "hashPath": "awssdk.cognitoidentityprovider.3.7.101.62.nupkg.sha512"
+    },
+    "AWSSDK.Core/3.7.103.24": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1Ft8nbvxsqWgY3yTyVaovdc0yYQe1QPVLjbgdcmdpebQ8SeKDnhvAKCo3FdVdO4UPxcNW2BDN9cJx3bu3qZbtw==",
+      "path": "awssdk.core/3.7.103.24",
+      "hashPath": "awssdk.core.3.7.103.24.nupkg.sha512"
+    }
+  }
+}

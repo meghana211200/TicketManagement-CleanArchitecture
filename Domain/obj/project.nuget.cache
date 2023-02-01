@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "YrqnOw9pP6Xku43aXnkM3GKRCEnj2m7DjX2Nrd79hicGR+JHdKvXYsIHznLZHrElVbLeXHQmnx5tNA+a0LKL7A==",
+  "success": true,
+  "projectFilePath": "/Users/presidio/Dotnet_POC/TicketManagement/Domain/Domain.csproj",
+  "expectedPackageFiles": [
+    "/Users/presidio/.nuget/packages/awssdk.cognitoidentityprovider/3.7.101.62/awssdk.cognitoidentityprovider.3.7.101.62.nupkg.sha512",
+    "/Users/presidio/.nuget/packages/awssdk.core/3.7.103.24/awssdk.core.3.7.103.24.nupkg.sha512"
+  ],
+  "logs": []
+}

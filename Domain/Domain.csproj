@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Entites\" />
+    <None Remove="DTO\" />
+    <None Remove="AWSSDK.Core" />
+    <None Remove="AWSSDK.CognitoIdentityProvider" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entites\" />
+    <Folder Include="DTO\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.Core" Version="3.7.103.24" />
+    <PackageReference Include="AWSSDK.CognitoIdentityProvider" Version="3.7.101.62" />
+  </ItemGroup>
+</Project>
