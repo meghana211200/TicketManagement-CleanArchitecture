@@ -26,7 +26,7 @@ public class TicketController : Controller
     }
 
     [HttpGet]
-    [Route("getTickets/{id}"), Authorize(Roles = "usr")]
+    [Route("getTickets/{id}"), Authorize(Roles = "User")]
     public ActionResult GetTicket(int? id)
     {
         List<Tickets> tickets = _ticketService.GetTicket(id).Result;
@@ -35,7 +35,7 @@ public class TicketController : Controller
     }
 
     [HttpPut]
-    [Route("updateTicket/{TicketNo}"), Authorize(Roles = "usr")]
+    [Route("updateTicket/{TicketNo}"), Authorize(Roles = "User")]
     public string UpdateTicket([FromBody] Tickets ticket, int? ticketNo)
     {
         return _ticketService.UpdateTicket(ticket, ticketNo);

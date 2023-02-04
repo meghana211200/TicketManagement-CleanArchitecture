@@ -14,6 +14,7 @@ using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -32,16 +33,11 @@ builder.Services.AddAuthentication("Bearer")
  {
      options.Audience = clientId;
      options.Authority = authorityUrl;
-     //options.TokenValidationParameters = new TokenValidationParameters
-     //{
-     //    ValidIssuer = authorityUrl,
-     //ValidateIssuerSigningKey = true,
-     //    ValidateIssuer = true,
-     //    ValidateLifetime = true,
-     //    ValidAudience = clientId,
-     //ValidateAudience = true,
-     //    RoleClaimType = "cognito:groups"
-     //};
+     options.SaveToken = true;
+     options.TokenValidationParameters = new TokenValidationParameters
+     {
+         RoleClaimType = "cognito:groups",
+     };
  });
 
 
@@ -52,11 +48,7 @@ builder.Services.AddAuthorization(options =>
         context.User.HasClaim(c => c.Type == "cognito:groups" && c.Value.Contains("User"))));
     });
 
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("SE", policy => policy.RequireAssertion(context =>
-    context.User.HasClaim(c => c.Type == "cognito:groups" && c.Value.Contains("SupportEngineer"))));
-});
+
 
 var app = builder.Build();
 

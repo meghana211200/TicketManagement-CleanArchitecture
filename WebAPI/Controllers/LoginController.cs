@@ -25,6 +25,13 @@ public class LoginController : ControllerBase
 
     }
 
+    [HttpGet]
+    [Route("hello")]
+    public string Hello()
+    {
+        return ("Hello");
+    }
+
 
     [HttpPost]
     [Route("login")]
