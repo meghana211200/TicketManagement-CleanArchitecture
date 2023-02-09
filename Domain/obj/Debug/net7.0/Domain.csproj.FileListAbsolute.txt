@@ -10,3 +10,5 @@
 /Users/presidio/Dotnet_POC/TicketManagement/Domain/obj/Debug/net7.0/refint/Domain.dll
 /Users/presidio/Dotnet_POC/TicketManagement/Domain/obj/Debug/net7.0/Domain.pdb
 /Users/presidio/Dotnet_POC/TicketManagement/Domain/obj/Debug/net7.0/ref/Domain.dll
+/Users/presidio/Dotnet_POC/TicketManagement/Domain/bin/Debug/net7.0/Domain.runtimeconfig.json
+/Users/presidio/Dotnet_POC/TicketManagement/Domain/obj/Debug/net7.0/Domain.genruntimeconfig.cache

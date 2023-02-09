@@ -6,19 +6,19 @@ namespace Application.Interface;
 
 public interface IAdminRepository
 {
-    public Task<List<Tickets>> GetAllTickets();
+    public Task<List<Ticket>> GetAllTickets();
 
     public Task<List<SupportEngineer>> GetAllAvailableSupportEng();
 
-    public Task<List<Tickets>> GetTicketsFilter(string ticketFilter);
+    public Task<List<Ticket>> GetTicketsFilter(string ticketFilter);
 
-    public bool CheckTicket(int ticket_id);
+    public bool CheckTicket(int ticketId);
 
     public bool AddTicket(TicketTracker ticketTrackers);
 
-    public bool UpdateTicket(int ticket_id);
+    public bool UpdateTicket(int ticketId);
 
-    public bool UpdateSupportEng(int se_id);
+    public bool UpdateSupportEng(int seId);
 
    
 }

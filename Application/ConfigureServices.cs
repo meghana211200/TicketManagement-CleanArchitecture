@@ -4,7 +4,7 @@ using Application.Services.Admin;
 using Application.Services.Login;
 using Application.Services.Register;
 using Application.Services.SupportEngineers;
-using Application.Services.Ticket;
+using Application.Services.Tickets;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -14,7 +14,7 @@ public static class ConfigureServices
     {
         services.AddScoped<IRegisterService, RegisterService>();
         services.AddScoped<ILoginService, LoginService>();
-        services.AddScoped<ITicketService, TicketService>();
+        services.AddScoped<ITicketsService, TicketsService>();
         services.AddScoped<IAdminService, AdminService>();
         services.AddScoped<ISupportEngineerService, SupportEngineerService>();
         return services;

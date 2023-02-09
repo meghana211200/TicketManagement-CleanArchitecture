@@ -13,21 +13,14 @@ public class SupportEngineerController : Controller
 
     public SupportEngineerController(ISupportEngineerService supportEngineerService)
     {
-
         _supportEngineerService = supportEngineerService;
     }
-
 
     [HttpPut]
     [Route("closeTicket/{id}"), Authorize(Roles = "se")]
     public ActionResult<Task<string>> CloseTicket([FromBody] TicketTrackerDTO ticketTracker)
     {
-
         var message = _supportEngineerService.CloseTicket(ticketTracker);
         return Ok(message);
-
     }
-
-
-
 }

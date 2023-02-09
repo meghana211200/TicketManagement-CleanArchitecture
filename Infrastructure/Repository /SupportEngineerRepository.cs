@@ -15,24 +15,24 @@ public class SupportEngineerRepository : ISupportEngineerRepository
         _context = context;
     }
 
-    public  TicketTracker CheckTicket(int ticket_id)
+    public  TicketTracker CheckTicket(int ticketId)
     {
-        TicketTracker checkTicket =  _context.TicketTracker.Where(e => e.ticket_id == ticket_id).SingleOrDefault();
+        TicketTracker checkTicket =  _context.TicketTrackers.Where(e => e.TicketId == ticketId).SingleOrDefault();
         return checkTicket;
     }
     public bool DeleteTicket(TicketTracker ticketTrackers)
     {
-        _context.TicketTracker.Remove(ticketTrackers);
+        _context.TicketTrackers.Remove(ticketTrackers);
         _context.SaveChanges();
         return true;
     }
 
-    public bool UpdateTicket(int ticket_id)
+    public bool UpdateTicket(int ticketId)
     {
-        var updateTicket = _context.Tickets.Where(x => x.ticket_id == ticket_id).SingleOrDefault();
+        var updateTicket = _context.Tickets.Where(x => x.TicketId == ticketId).SingleOrDefault();
         if (updateTicket != null)
         {
-            updateTicket.ticket_status = "Resolved";
+            updateTicket.TicketStatus = "Resolved";
             _context.SaveChanges();
             return true;
         }
@@ -42,12 +42,12 @@ public class SupportEngineerRepository : ISupportEngineerRepository
         }
     }
 
-    public bool UpdateSupportEng(int se_id)
+    public bool UpdateSupportEng(int seId)
     {
-        var supportEngineer = _context.SupportEngineer.Where(x => x.se_id == se_id).SingleOrDefault();
+        var supportEngineer = _context.SupportEngineers.Where(x => x.SeId == seId).SingleOrDefault();
         if (supportEngineer != null)
         {
-            supportEngineer.isAvailable = true;
+            supportEngineer.IsAvailable = true;
             _context.SaveChanges();
             return true;
         }

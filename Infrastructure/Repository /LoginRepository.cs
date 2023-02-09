@@ -17,7 +17,7 @@ public class LoginRepository : ILoginRepository
 
     public User CheckEmail(string email)
     {
-        var checkEmail = _context.User.FirstOrDefault(x => x.user_email == email);
+        var checkEmail = _context.Users.FirstOrDefault(x => x.UserEmail == email);
         return (checkEmail);
     }
 }

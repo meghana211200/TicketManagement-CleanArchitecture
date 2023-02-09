@@ -1,20 +1,23 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
-namespace Domain.Entites;
-
-public class User
+namespace Domain.Entites
 {
-    [Key]
-    public int user_id { get; set; }
+    public partial class User
+    {
+        public User()
+        {
+            SupportEngineers = new HashSet<SupportEngineer>();
+            Tickets = new HashSet<Ticket>();
+        }
 
-    public string user_name { get; set; }
+        public int UserId { get; set; }
+        public string UserName { get; set; }
+        public string UserEmail { get; set; }
+        public string UserPassword { get; set; }
+        public string UserRole { get; set; }
 
-    public string user_email { get; set; }
-
-    public string user_password { get; set; }
-
-    public string user_role { get; set; }
-
+        public virtual ICollection<SupportEngineer> SupportEngineers { get; set; }
+        public virtual ICollection<Ticket> Tickets { get; set; }
+    }
 }
-

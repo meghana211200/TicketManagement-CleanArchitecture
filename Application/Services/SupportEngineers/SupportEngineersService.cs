@@ -16,12 +16,12 @@ public class SupportEngineerService : ISupportEngineerService
 
     public string CloseTicket(TicketTrackerDTO ticketTracker)
     {
-        bool updateTicket = _supportEngineerRepository.UpdateTicket(ticketTracker.ticket_id);
+        bool updateTicket = _supportEngineerRepository.UpdateTicket(ticketTracker.ticketId);
 
-        bool supportEngineer = _supportEngineerRepository.UpdateSupportEng(ticketTracker.se_id);
+        bool supportEngineer = _supportEngineerRepository.UpdateSupportEng(ticketTracker.seId);
 
 
-        TicketTracker ticket = _supportEngineerRepository.CheckTicket(ticketTracker.ticket_id);
+        TicketTracker ticket = _supportEngineerRepository.CheckTicket(ticketTracker.ticketId);
         if (ticket == null)
         {
             return ("Ticket not present");

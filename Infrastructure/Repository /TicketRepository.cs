@@ -18,12 +18,12 @@ public class TicketRepository : ITicketRepository
 
     public User CheckUser(int? id)
     {
-        var user = _context.User.Where(x => x.user_id == id).SingleOrDefault();
+        var user = _context.Users.Where(x => x.UserId== id).SingleOrDefault();
         return user;
 
     }
 
-    public bool AddIssue(Tickets complaint)
+    public bool AddIssue(Ticket complaint)
     {
         _context.Tickets.Add(complaint);
         _context.SaveChanges();
@@ -31,23 +31,23 @@ public class TicketRepository : ITicketRepository
 
     }
 
-    public async Task<List<Tickets>> GetTickets(int? id)
+    public async Task<List<Ticket>> GetTickets(int? id)
     {
-        List<Tickets> ticket = await _context.Tickets.Where(x => x.ticket_user_id == id).ToListAsync();
+        List<Ticket> ticket = await _context.Tickets.Where(x => x.TicketUserId== id).ToListAsync();
         return (ticket);
     }
 
-    public bool UpdateTicket(Tickets ticket, int? ticketNo)
+    public bool UpdateTicket(Ticket ticket, int? ticketNo)
     {
-        var updateTicket = _context.Tickets.Where(x => x.ticket_id == ticketNo).SingleOrDefault();
-        updateTicket.complaint = ticket.complaint;
+        var updateTicket = _context.Tickets.Where(x => x.TicketId == ticketNo).SingleOrDefault();
+        updateTicket.Complaint = ticket.Complaint;
         _context.SaveChanges();
         return true;
     }
 
     public bool CheckTicket(int? ticketNo)
     {
-        var ticket = _context.Tickets.Where(e => e.ticket_id == ticketNo).SingleOrDefault();
+        var ticket = _context.Tickets.Where(e => e.TicketId == ticketNo).SingleOrDefault();
         if (ticket == null)
         {
             return false;
@@ -60,7 +60,7 @@ public class TicketRepository : ITicketRepository
 
     public bool DeleteTicket(int? ticketNo)
     {
-        var ticket = _context.Tickets.Where(e => e.ticket_id == ticketNo).SingleOrDefault();
+        var ticket = _context.Tickets.Where(e => e.TicketId == ticketNo).SingleOrDefault();
         _context.Tickets.Remove(ticket);
         _context.SaveChanges();
         return true;

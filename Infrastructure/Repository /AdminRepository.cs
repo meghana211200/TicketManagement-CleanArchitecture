@@ -16,27 +16,27 @@ public class AdminRepository : IAdminRepository
         _context = context;
     }
 
-    public async Task<List<Tickets>> GetAllTickets()
+    public async Task<List<Ticket>> GetAllTickets()
     {
-        List<Tickets> ticket = await _context.Tickets.ToListAsync();
+        List<Ticket> ticket = await _context.Tickets.ToListAsync();
         return (ticket);
     }
 
     public async Task<List<SupportEngineer>> GetAllAvailableSupportEng()
     {
-        List<SupportEngineer> supportEngineers = await _context.SupportEngineer.Where(x => x.isAvailable == true).ToListAsync();
+        List<SupportEngineer> supportEngineers = await _context.SupportEngineers.Where(x => x.IsAvailable == true).ToListAsync();
         return (supportEngineers);
     }
 
-    public async Task<List<Tickets>> GetTicketsFilter(string ticketFilter)
+    public async Task<List<Ticket>> GetTicketsFilter(string ticketFilter)
     {
-        List<Tickets> ticket = await _context.Tickets.Where(x => x.ticket_status == ticketFilter).ToListAsync();
+        List<Ticket> ticket = await _context.Tickets.Where(x => x.TicketStatus == ticketFilter).ToListAsync();
         return (ticket);
     }
 
-    public bool CheckTicket(int ticket_id)
+    public bool CheckTicket(int ticketId)
     {
-       var checkTicket= _context.TicketTracker.FirstOrDefault(x => x.ticket_id == ticket_id);
+       var checkTicket= _context.TicketTrackers.FirstOrDefault(x => x.TicketId == ticketId);
         if(checkTicket != null)
         {
             return true;
@@ -49,17 +49,17 @@ public class AdminRepository : IAdminRepository
 
     public bool AddTicket(TicketTracker ticketTrackers)
     {
-        _context.TicketTracker.Add(ticketTrackers);
+        _context.TicketTrackers.Add(ticketTrackers);
         _context.SaveChanges();
         return true;
     }
 
-    public bool UpdateTicket(int ticket_id)
+    public bool UpdateTicket(int ticketId)
     {
-        var updateTicket = _context.Tickets.Where(x => x.ticket_id == ticket_id).SingleOrDefault();
+        var updateTicket = _context.Tickets.Where(x => x.TicketId == ticketId).SingleOrDefault();
         if (updateTicket != null)
         {
-            updateTicket.ticket_status = "Assigned";
+            updateTicket.TicketStatus = "Assigned";
             _context.SaveChanges();
             return true;
         }
@@ -70,12 +70,12 @@ public class AdminRepository : IAdminRepository
 
     }
 
-    public bool UpdateSupportEng(int se_id)
+    public bool UpdateSupportEng(int seId)
     {
-        var supportEngineer = _context.SupportEngineer.Where(x => x.se_id == se_id).SingleOrDefault();
+        var supportEngineer = _context.SupportEngineers.Where(x => x.SeId == seId).SingleOrDefault();
         if (supportEngineer != null)
         {
-            supportEngineer.isAvailable = false;
+            supportEngineer.IsAvailable = false;
             _context.SaveChanges();
             return true;
         }

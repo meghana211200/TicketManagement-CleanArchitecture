@@ -76,3 +76,7 @@
 /Users/presidio/Dotnet_POC/TicketManagement/WebAPI/obj/Debug/net7.0/WebAPI.pdb
 /Users/presidio/Dotnet_POC/TicketManagement/WebAPI/obj/Debug/net7.0/WebAPI.genruntimeconfig.cache
 /Users/presidio/Dotnet_POC/TicketManagement/WebAPI/obj/Debug/net7.0/ref/WebAPI.dll
+/Users/presidio/Dotnet_POC/TicketManagement/WebAPI/bin/Debug/net7.0/Castle.Core.dll
+/Users/presidio/Dotnet_POC/TicketManagement/WebAPI/bin/Debug/net7.0/Moq.dll
+/Users/presidio/Dotnet_POC/TicketManagement/WebAPI/bin/Debug/net7.0/MySqlConnector.dll
+/Users/presidio/Dotnet_POC/TicketManagement/WebAPI/bin/Debug/net7.0/Pomelo.EntityFrameworkCore.MySql.dll

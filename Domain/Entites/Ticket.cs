@@ -1,21 +1,21 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
-namespace Domain.Entites;
-
-public class Tickets
+namespace Domain.Entites
 {
-    [Key]
-    public int ticket_id { get; set; }
+    public partial class Ticket
+    {
+        public Ticket()
+        {
+            TicketTrackers = new HashSet<TicketTracker>();
+        }
 
-    public int ticket_user_id { get; set; }
+        public int TicketId { get; set; }
+        public int TicketUserId { get; set; }
+        public string Complaint { get; set; }
+        public string TicketStatus { get; set; }
 
-    public string complaint { get; set; }
-
-    public string ticket_status { get; set; } = "New";
-
-    [ForeignKey("ticket_user_id")]
-    public virtual User user { get; set; }
+        public virtual User TicketUser { get; set; }
+        public virtual ICollection<TicketTracker> TicketTrackers { get; set; }
+    }
 }
-

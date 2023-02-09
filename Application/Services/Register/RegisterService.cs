@@ -10,6 +10,8 @@ using Amazon.CognitoIdentityProvider.Model;
 using Microsoft.Extensions.Configuration;
 using System.Configuration;
 using Amazon;
+using System.Security.Authentication;
+using Domain.DTO;
 
 namespace Application.Services.Register;
 
@@ -27,44 +29,44 @@ public class RegisterService : IRegisterService
 
     private readonly RegionEndpoint _region = RegionEndpoint.USEast1;
 
-    public async Task<string> Register([FromBody] User userInfo)
+    public async Task<string> Register([FromBody] UserDTO userInfo)
     {
         var cognito = new AmazonCognitoIdentityProviderClient(_region);
 
         var request = new SignUpRequest
         {
             ClientId = _configuration.GetValue<string>("Cognito:ClientId"),
-            Password = userInfo.user_password,
-            Username = userInfo.user_email
+            Password = userInfo.UserPassword,
+            Username = userInfo.UserEmail
         };
 
         var emailAttribute = new AttributeType
         {
             Name = "email",
-            Value = userInfo.user_email
+            Value = userInfo.UserEmail
         };
         request.UserAttributes.Add(emailAttribute);
 
         var response = await cognito.SignUpAsync(request);
 
-        if (userInfo.user_role == "usr")
+        if (userInfo.UserRole == "usr")
         {
             var groupRequest = new AdminAddUserToGroupRequest
             {
                 GroupName = "User",
                 UserPoolId = _configuration.GetValue<string>("Cognito:UserPoolId"),
-                Username = userInfo.user_email
+                Username = userInfo.UserEmail
             };
             var groupAddedResponse = await cognito.AdminAddUserToGroupAsync(groupRequest);
 
         }
-        else if (userInfo.user_role == "se")
+        else if (userInfo.UserRole == "se")
         {
             var groupRequest = new AdminAddUserToGroupRequest
             {
                 GroupName = "SupportEngineer",
                 UserPoolId = _configuration.GetValue<string>("Cognito:UserPoolId"),
-                Username = userInfo.user_email
+                Username = userInfo.UserEmail
             };
             var groupAddedResponse = await cognito.AdminAddUserToGroupAsync(groupRequest);
         }
@@ -72,25 +74,25 @@ public class RegisterService : IRegisterService
         var AdminConfirmSignup = new AdminConfirmSignUpRequest
         {
             UserPoolId = _configuration.GetValue<string>("Cognito:UserPoolId"),
-            Username = userInfo.user_email
+            Username = userInfo.UserEmail
         };
         await cognito.AdminConfirmSignUpAsync(AdminConfirmSignup);
 
-        var checkEmail = _registerRepository.CheckEmail(userInfo.user_email);
+        var checkEmail = _registerRepository.CheckEmail(userInfo.UserEmail);
         if (checkEmail == null)
         {
-            if (userInfo.user_email.Contains("@gmail.com") && userInfo.user_password.Length > 8)
+            if (userInfo.UserEmail.Contains("@gmail.com") && userInfo.UserPassword.Length > 8)
             {
-                userInfo.user_password = bcrypt.HashPassword(userInfo.user_password, 12);
+                userInfo.UserPassword = bcrypt.HashPassword(userInfo.UserPassword, 12);
                 //_context.User.Add(userInfo);
                 //_context.SaveChanges();
                 bool addedUser = _registerRepository.AddUser(userInfo);
-                if (userInfo.user_role == "se")
+                if (userInfo.UserRole == "se")
                 {
                     var supportEngineer = new SupportEngineer
                     {
-                        se_user_id = userInfo.user_id,
-                        isAvailable = true
+                        SeUserId= userInfo.UserId,
+                        IsAvailable = true
 
                     };
                     //_context.SupportEngineer.Add(supportEngineer);
@@ -101,13 +103,13 @@ public class RegisterService : IRegisterService
             }
             else
             {
-                return ("Incorrect Email");
+                throw new AuthenticationException("Incorrect Email");
             }
 
         }
         else
         {
-            return ("User already present");
+            throw new AuthenticationException("User already present");
         }
     }
 }

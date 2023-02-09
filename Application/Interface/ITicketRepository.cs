@@ -8,11 +8,11 @@ public interface ITicketRepository
 
     public User CheckUser(int? id);
 
-    public bool AddIssue(Tickets complaint);
+    public bool AddIssue(Ticket complaint);
 
-    public Task<List<Tickets>> GetTickets(int? id);
+    public Task<List<Ticket>> GetTickets(int? id);
 
-    public bool UpdateTicket(Tickets ticket, int? ticketNo);
+    public bool UpdateTicket(Ticket ticket, int? ticketNo);
 
     public bool CheckTicket(int? ticketNo);
 

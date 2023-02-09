@@ -1,23 +1,15 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Net.Sockets;
+using System.Collections.Generic;
 
-namespace Domain.Entites;
-
-public class TicketTracker
+namespace Domain.Entites
 {
+    public partial class TicketTracker
+    {
+        public int TicketTrackerId { get; set; }
+        public int TicketId { get; set; }
+        public int TicketTrackerSeId { get; set; }
 
-    [Key]
-    public int ticketTracker_id { get; set; }
-    public int ticket_id { get; set; }
-
-    public int ticketTracker_se_id { get; set; }
-
-    [ForeignKey("ticket_id")]
-    public virtual Tickets ticket { get; set; }
-
-    [ForeignKey("ticketTracker_se_id")]
-    public virtual SupportEngineer supportEngineer { get; set; }
-
+        public virtual Ticket Ticket { get; set; }
+        public virtual SupportEngineer TicketTrackerSe { get; set; }
+    }
 }

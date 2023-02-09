@@ -18,16 +18,12 @@ public class AdminController : Controller
         _adminService = adminService;
     }
 
-
-
     [HttpGet]
     [Route("getAllTickets/{id}"), Authorize(Roles = "adm")]
-    public ActionResult<List<Tickets>> GetAllTicket()
+    public ActionResult<List<Ticket>> GetAllTicket()
     {
-
-        List<Tickets> tickets = _adminService.GetAllTicket().Result;
+        List<Ticket> tickets = _adminService.GetAllTicket().Result;
         return Ok(tickets);
-
     }
 
     [HttpGet]
@@ -36,18 +32,15 @@ public class AdminController : Controller
     {
         List<SupportEngineer> supportEngineers = _adminService.GetAllAvailableSupportEng().Result;
         return Ok(supportEngineers);
-
     }
 
     [HttpGet]
     [Route("getTicketsFilter/{id}"), Authorize(Roles = "adm")]
-    public ActionResult<List<Tickets>> GetTicketsFilter([FromBody] TicketFilterDTO ticketFilter)
+    public ActionResult<List<Ticket>> GetTicketsFilter([FromBody] TicketFilterDTO ticketFilter)
     {
-        List<Tickets> tickets = _adminService.GetTicketsFilter(ticketFilter).Result;
+        List<Ticket> tickets = _adminService.GetTicketsFilter(ticketFilter).Result;
         return Ok(tickets);
-
     }
-
 
     [HttpPost]
     [Route("assignTicket/{id}"), Authorize(Roles = "adm")]
@@ -55,6 +48,5 @@ public class AdminController : Controller
     {
         var message = _adminService.AssignTicket(ticketTracker);
         return Ok(message);
-
     }
 }

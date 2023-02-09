@@ -15,9 +15,9 @@ public class AdminService : IAdminService
         _adminRepository = adminRepository;
     }
 
-    public async Task<List<Tickets>> GetAllTicket()
+    public async Task<List<Ticket>> GetAllTicket()
     {
-        List<Tickets> ticket = await _adminRepository.GetAllTickets();
+        List<Ticket> ticket = await _adminRepository.GetAllTickets();
         return (ticket);
     }
 
@@ -27,29 +27,29 @@ public class AdminService : IAdminService
         return (supportEngineers);
     }
 
-    public async Task<List<Tickets>> GetTicketsFilter(TicketFilterDTO ticketFilter)
+    public async Task<List<Ticket>> GetTicketsFilter(TicketFilterDTO ticketFilter)
     {
-        List<Tickets> ticket = await _adminRepository.GetTicketsFilter(ticketFilter.ticketStatus);
+        List<Ticket> ticket = await _adminRepository.GetTicketsFilter(ticketFilter.ticketStatus);
         return (ticket);
     }
 
     public string AssignTicket(TicketTrackerDTO ticketTracker)
     {
-        bool checkTicket =_adminRepository.CheckTicket(ticketTracker.ticket_id);
+        bool checkTicket =_adminRepository.CheckTicket(ticketTracker.ticketId);
         if (checkTicket == false)
         {
             var ticketTrackers = new TicketTracker
             {
 
-                ticketTracker_se_id = ticketTracker.se_id,
-                ticket_id = ticketTracker.ticket_id,
+                TicketTrackerSeId = ticketTracker.seId,
+                TicketId = ticketTracker.ticketId,
 
             };
             bool addTicket = _adminRepository.AddTicket(ticketTrackers);
 
-            bool updateTicket = _adminRepository.UpdateTicket( ticketTracker.ticket_id);
+            bool updateTicket = _adminRepository.UpdateTicket( ticketTracker.ticketId);
 
-            bool supportEngineer = _adminRepository.UpdateSupportEng(ticketTracker.se_id);
+            bool supportEngineer = _adminRepository.UpdateSupportEng(ticketTracker.seId);
 
             if(addTicket && updateTicket && supportEngineer)
             {

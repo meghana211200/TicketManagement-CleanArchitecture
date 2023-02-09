@@ -11,12 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{C16732E0-404C-47AF-8136-67F91048CE18}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{14150B51-91AF-417F-ADBE-BCC320E66D0F}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{12606C44-D021-47EC-AE1D-298C9789335C}"
-	ProjectSection(SolutionItems) = preProject
-		Dockerfile = Dockerfile
-	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketManagementTest", "TicketManagementTest\TicketManagementTest.csproj", "{E585DF22-FA6C-42C6-AF65-9BEED9E3D897}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,9 +40,9 @@ Global
 		{C16732E0-404C-47AF-8136-67F91048CE18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C16732E0-404C-47AF-8136-67F91048CE18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C16732E0-404C-47AF-8136-67F91048CE18}.Release|Any CPU.Build.0 = Release|Any CPU
-		{14150B51-91AF-417F-ADBE-BCC320E66D0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14150B51-91AF-417F-ADBE-BCC320E66D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14150B51-91AF-417F-ADBE-BCC320E66D0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14150B51-91AF-417F-ADBE-BCC320E66D0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E585DF22-FA6C-42C6-AF65-9BEED9E3D897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E585DF22-FA6C-42C6-AF65-9BEED9E3D897}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E585DF22-FA6C-42C6-AF65-9BEED9E3D897}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E585DF22-FA6C-42C6-AF65-9BEED9E3D897}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

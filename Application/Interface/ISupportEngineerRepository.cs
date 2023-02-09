@@ -5,12 +5,12 @@ namespace Application.Interface;
 
 public interface ISupportEngineerRepository
 {
-    public TicketTracker CheckTicket(int ticket_id);
+    public TicketTracker CheckTicket(int ticketId);
 
     public bool DeleteTicket(TicketTracker ticketTrackers);
 
-    public bool UpdateTicket(int ticket_id);
+    public bool UpdateTicket(int ticketId);
 
-    public bool UpdateSupportEng(int se_id);
+    public bool UpdateSupportEng(int seId);
 }
 

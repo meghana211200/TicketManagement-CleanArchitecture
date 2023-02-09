@@ -18,20 +18,23 @@
     <None Remove="Services\Login\" />
     <None Remove="System.IdentityModel.Tokens.Jwt" />
     <None Remove="Microsoft.IdentityModel.Tokens" />
-    <None Remove="Services\Ticket\" />
     <None Remove="Services\Admin\" />
     <None Remove="Services\SupportEngineers\" />
     <None Remove="AWSSDK.Core" />
     <None Remove="AWSSDK.CognitoIdentityProvider" />
+    <None Remove="Exceptions\" />
+    <None Remove="Moq" />
+    <None Remove="Services\Tickets\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
     <Folder Include="Interface\" />
     <Folder Include="Services\Register\" />
     <Folder Include="Services\Login\" />
-    <Folder Include="Services\Ticket\" />
     <Folder Include="Services\Admin\" />
     <Folder Include="Services\SupportEngineers\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Services\Tickets\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
@@ -51,6 +54,7 @@
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.5.0" />
     <PackageReference Include="AWSSDK.Core" Version="3.7.103.24" />
     <PackageReference Include="AWSSDK.CognitoIdentityProvider" Version="3.7.101.62" />
+    <PackageReference Include="Moq" Version="4.16.0" />
   </ItemGroup>
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
